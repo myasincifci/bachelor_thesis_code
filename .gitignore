@@ -1,0 +1,4 @@
+datasets/*
+model_zoo/*
+runs/*
+Tempo2.egg-info
