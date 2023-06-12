@@ -35,13 +35,10 @@ def train(epochs, lr, l, train_loader, pretrain, device):
     model = Tempo(pretrain=pretrain).to(device)
     criterion = BarlowTwinsLoss(lambda_param=l)
 
-    optimizer = torch.optim.AdamW([
-        {"params": model.backbone.parameters(), "lr": 5e-5},
-        {"params": model.projection_head.parameters(), "lr": 1e-5}
-    ])
+    optimizer = torch.optim.SGD(model.parameters(), lr=lr, weight_decay=0.001)
 
     for epoch in range(epochs):
-        print(optimizer.param_groups[0]['lr'], optimizer.param_groups[1]['lr'])
+        print(optimizer.param_groups[0]['lr'])
         loss = train_one_epoch(model, train_loader, criterion, optimizer, device)
         print(epoch, loss)
 

@@ -54,7 +54,7 @@ class VideoDataset(Dataset):
         # index_d = np.random.choice(list(possbile_l) + list(possbile_r))
         # image_d = Image.open(self.image_paths[index_d])
 
-        pb = p_nml(index, self.p, self.__len__())
+        pb = p_uni(index, self.p, self.__len__())
         index_d = np.random.choice(np.arange(len(pb)), p=pb)
         image_d = Image.open(self.image_paths[index_d])
 

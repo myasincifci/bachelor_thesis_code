@@ -1,4 +1,4 @@
-datasets/*
+datasets/ASL-big
+datasets/ASL_mask
 model_zoo/*
 runs/*
-Tempo2.egg-info
