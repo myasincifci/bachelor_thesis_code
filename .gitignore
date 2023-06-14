@@ -2,3 +2,5 @@ datasets/ASL-big
 datasets/ASL_mask
 model_zoo/*
 runs/*
+xai/relative_relevance/gtFine
+xai/relative_relevance/imgsFine
