@@ -10,8 +10,8 @@ transform = T.Compose([
     T.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225))
 ])
 
-def video_dataset(batch_size=80, proximity=30):
-    dataset = VideoDataset('./datasets/ASL-big/frames', transform=transform, proximity=proximity)
+def video_dataset(batch_size=80, proximity=30, pdf=None):
+    dataset = VideoDataset('./datasets/ASL-big/frames', transform=transform, proximity=proximity, pdf=pdf)
     dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True, drop_last=False, num_workers=8)
 
     return dataloader

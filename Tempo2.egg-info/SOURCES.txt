@@ -7,4 +7,5 @@ Tempo2.egg-info/top_level.txt
 tempo2/models.py
 tempo2/data/datasets.py
 tempo2/data/finetune_dataset.py
+tempo2/data/pdfs.py
 tempo2/data/video_dataset.py

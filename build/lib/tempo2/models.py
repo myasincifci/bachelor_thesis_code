@@ -4,7 +4,7 @@ from torch import nn
 import torch
 
 class Tempo(nn.Module):
-    def __init__(self, pretrain=True) -> None:
+    def __init__(self, pretrain:bool=True, embedding_dim:int=1024) -> None:
         super(Tempo, self).__init__()
         
         if pretrain:
@@ -12,11 +12,8 @@ class Tempo(nn.Module):
         else:
             resnet = resnet34()
 
-        
-
         self.backbone = nn.Sequential(*list(resnet.children())[:-1])
-        self.projection_head = BarlowTwinsProjectionHead(512, 1024, 1024)
-        # self.projection_head = BarlowTwinsProjectionHead(512, 4096, 4096)
+        self.projection_head = BarlowTwinsProjectionHead(512, embedding_dim, embedding_dim)
 
     def forward(self, x):
         x = self.backbone(x).flatten(start_dim=1)

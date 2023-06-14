@@ -1,18 +1,17 @@
 import argparse
-from tqdm import tqdm
 
 import numpy as np
-
 import torch
-from torchvision import transforms as T
 from lightly.loss import BarlowTwinsLoss
-
-from tempo2.models import Tempo, Baseline, TempoLinear
-from tempo2.data.datasets import video_dataset, finetune_dataset
-
 from linear_eval import linear_eval
-
 from torch.utils.tensorboard import SummaryWriter
+from torchvision import transforms as T
+from tqdm import tqdm
+
+from tempo2.data.datasets import finetune_dataset, video_dataset
+from tempo2.data.pdfs import p_nml, p_uni, pdf_index
+from tempo2.models import Baseline, Tempo, TempoLinear
+
 
 def train_one_epoch(model, dataloader, criterion, optimizer, device):
     losses = []
@@ -51,11 +50,18 @@ def main(args):
     l = args.l if args.l else 1e-3
     evaluation = args.eval
     baseline = args.baseline if args.baseline else False
+    pdf = args.pdf
     proximity = args.proximity if args.proximity else 30
     save_model = args.save_model
 
     # Load datasets
-    train_loader = video_dataset(proximity=proximity, batch_size=200)
+
+    if pdf and pdf in pdf_index.keys(): 
+        pdf_f = pdf_index[pdf]
+    else:
+        raise Exception("Please provide a valid pdf name.")
+
+    train_loader = video_dataset(proximity=proximity, batch_size=200, pdf=pdf_f)
     train_loader_ft = finetune_dataset(name='ASL-big', train=True, batch_size=10)
     test_loader_ft = finetune_dataset(train=False, batch_size=10)
 
@@ -103,6 +109,7 @@ if __name__ == '__main__':
     parser.add_argument('--l', type=float, required=False)
     parser.add_argument('--eval', type=bool, required=False)
     parser.add_argument('--baseline', type=bool, required=False)
+    parser.add_argument('--pdf', type=str, required=False)
     parser.add_argument('--proximity', type=int, required=False)
     parser.add_argument('--save_model', type=str, required=False)
 

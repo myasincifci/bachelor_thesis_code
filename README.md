@@ -10,6 +10,7 @@ Clone the repository and run:
         --lr 0.001 \
         --l 0.001 \
         --epochs 10 \
+        --pdf uniform
         --proximity 30 \
         --save_model tempo.pth \
         --eval True
