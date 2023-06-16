@@ -7,7 +7,8 @@ Clone the repository and run:
     pip install .
 
 ## Download Datasets
-    
+    mkdir datasets
+    python download_data.py
 
 ## Training
     python tools/train_net.py \
