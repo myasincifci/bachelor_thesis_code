@@ -6,6 +6,9 @@ Clone the repository and run:
     
     pip install .
 
+## Download Datasets
+    
+
 ## Training
     python tools/train_net.py \
         --lr 0.001 \
