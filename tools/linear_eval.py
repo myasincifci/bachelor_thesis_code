@@ -4,8 +4,8 @@ import os
 import numpy as np
 import torch
 import torch.nn as nn
-from tempo.data.datasets import finetune_dataset
-from tempo.models import NewTempoLinear
+from tempo2.data.datasets import finetune_dataset
+from tempo2.models import TempoLinear
 from torch.utils.tensorboard import SummaryWriter
 from tqdm import tqdm
 
@@ -115,7 +115,7 @@ def main(args):
 
     # Load model from path
     weights = torch.load(path)
-    model = NewTempoLinear(out_features=24, weights=None, freeze_backbone=True)
+    model = TempoLinear(out_features=24, weights=None, freeze_backbone=True)
     model.load_state_dict(weights)
     model.to(device)
 
