@@ -10,12 +10,13 @@ setup(name='Tempo2',
           "numpy==1.21.6",
           "torch==1.13.0",
           "torchvision==0.14.0",
-          "tqdm",
+          "tqdm==4.64.1",
           "lightly==1.2.35",
           "lightly-utils==0.0.2",
-          "matplotlib",
+          "matplotlib==3.5.2",
           "Pillow==8.1.1",
           "tensorboard==2.10.1",
-          "zennit==0.5.0"
+          "zennit==0.5.0",
+          "pytorch-lightning==1.8.1"
       ]
      )
