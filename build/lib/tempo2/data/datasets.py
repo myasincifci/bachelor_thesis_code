@@ -10,6 +10,11 @@ transform = T.Compose([
     T.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225))
 ])
 
+transform_jup = T.Compose([
+    T.Resize(128),
+    T.ToTensor(),
+])
+
 def video_dataset(batch_size=80, proximity=30, pdf=None):
     dataset = VideoDataset('./datasets/ASL-big/frames', transform=transform, proximity=proximity, pdf=pdf)
     dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True, drop_last=False, num_workers=8)
@@ -18,6 +23,12 @@ def video_dataset(batch_size=80, proximity=30, pdf=None):
 
 def finetune_dataset(name='ASL-big', batch_size=80, train=True, samples_pc=None, drop_last=False):
     dataset = FinetuneDataset(f'./datasets/{name}', transform=transform, train=train, samples_pc=samples_pc)
+    dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True, drop_last=drop_last, num_workers=2)
+
+    return dataloader
+
+def finetune_dataset_jup(name='ASL-big', batch_size=80, train=True, samples_pc=None, drop_last=False):
+    dataset = FinetuneDataset(f'../../datasets/{name}', transform=transform_jup, train=train, samples_pc=samples_pc)
     dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True, drop_last=drop_last, num_workers=2)
 
     return dataloader
