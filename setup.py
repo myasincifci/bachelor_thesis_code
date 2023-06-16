@@ -17,6 +17,7 @@ setup(name='Tempo2',
           "Pillow==8.1.1",
           "tensorboard==2.10.1",
           "zennit==0.5.0",
-          "pytorch-lightning==1.8.1"
+          "pytorch-lightning==1.8.1",
+          "scipy==1.9.1"
       ]
      )
