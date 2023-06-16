@@ -7,5 +7,5 @@ output = './datasets/data.tar.xz'
 if __name__ == "__main__":
     gdown.download(url, output, quiet=False)
 
-    with tarfile.open('test.tar.xz') as f:
+    with tarfile.open('./datasets/data.tar.xz') as f:
         f.extractall('./datasets')
