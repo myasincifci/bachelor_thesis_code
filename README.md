@@ -1,4 +1,5 @@
-# This is the repository for my bachelor thesis
+# Bachelor's Thesis: Exploiting Temporal Coherence in Video
+
 
 ## Installation
 Clone the repository and run:
@@ -10,7 +11,7 @@ Clone the repository and run:
         --lr 0.001 \
         --l 0.001 \
         --epochs 10 \
-        --pdf uniform
+        --pdf uniform \
         --proximity 30 \
         --save_model tempo.pth \
         --eval True
