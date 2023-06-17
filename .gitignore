@@ -8,3 +8,4 @@ xai/relative_relevance/gtFine
 xai/relative_relevance/imgsFine
 build
 Tempo2.egg-info
+segmentation/*.pth
