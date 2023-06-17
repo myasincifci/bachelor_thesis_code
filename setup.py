@@ -19,6 +19,7 @@ setup(name='Tempo2',
           "zennit==0.5.0",
           "pytorch-lightning==1.8.1",
           "scipy==1.9.1",
-          "gdown==4.6.4"
+          "gdown==4.6.4",
+          "detectron2==0.6"
       ]
      )
