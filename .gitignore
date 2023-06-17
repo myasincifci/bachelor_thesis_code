@@ -1,6 +1,8 @@
 datasets/ASL-big
 datasets/ASL_mask
-model_zoo/*
+model_zoo/*.pth
+model_zoo/*.pkl
+model_zoo/*.tar.xz
 runs/*
 xai/relative_relevance/gtFine
 xai/relative_relevance/imgsFine
