@@ -44,3 +44,10 @@ Perform linear eval at end
         --path model_zoo/tempo.pth \
         --runs 10 \
         --name tempo_semi_sup_eval
+
+## Segmentation 
+### Installation
+Before running the segmentation example, please install the
+detectron2 library following the [installation instructions](https://detectron2.readthedocs.io/en/latest/tutorials/install.html).
+### Running
+To run ...
