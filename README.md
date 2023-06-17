@@ -51,3 +51,5 @@ Before running the segmentation example, please install the
 detectron2 library following the [installation instructions](https://detectron2.readthedocs.io/en/latest/tutorials/install.html).
 ### Running
 To run ...
+
+## Explanation

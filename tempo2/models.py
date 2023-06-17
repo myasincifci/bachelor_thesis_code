@@ -1,5 +1,5 @@
 from lightly.models.modules import BarlowTwinsProjectionHead
-from torchvision.models import resnet34, ResNet34_Weights
+from torchvision.models import resnet34, resnet50, ResNet34_Weights, ResNet50_Weights
 from torch import nn
 import torch
 
