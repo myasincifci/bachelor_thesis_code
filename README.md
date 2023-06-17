@@ -7,18 +7,22 @@ Clone the repository and run:
     pip install .
 
 ## Download Datasets
-    mkdir datasets
-    python download_data.py
+    python datasets/download_data.py
+
+## Download pretrained models
+    python model_zoo/download_models.py
 
 ## Training
+To train a tempo feature extractor 
+
     python tools/train_net.py \
-        --lr 0.001 \
-        --l 0.001 \
-        --epochs 10 \
-        --pdf uniform \
-        --proximity 30 \
-        --save_model tempo.pth \
-        --eval True
+        --lr 0.001 \ # SGD learning rate 
+        --l 0.001 \ # BarlowTwins loss lambda parameter
+        --epochs 10 \ # Number of epochs (complete video)
+        --pdf uniform \ # Sampling pdf
+        --proximity 30 \ # Proximity (tau or sigma depending on pdf)
+        --save_model tempo.pth \ # Checkpoint name (not saved if none)
+        --eval True # Perform linear eval at end
 
 ## Linear Evaluation
     python tools/linear_eval.py \
