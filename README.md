@@ -73,7 +73,7 @@ An example for training a ResNet50 Tempo Backbone is provided in the following [
 ### Running
 
     python segmentation/segmentation.py \
-        --path ../model_zoo/tempo50.pkl
+        --path ./model_zoo/tempo50.pkl
 
 Results will be written to tensorboard. 
 
