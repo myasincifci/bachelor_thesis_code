@@ -1,3 +1,4 @@
+import argparse
 import os
 
 from detectron2 import model_zoo
@@ -10,7 +11,7 @@ from detectron2.evaluation import COCOEvaluator, inference_on_dataset
 from detectron2.evaluation.coco_evaluation import COCOEvaluator
 
 
-def make_config():
+def make_config(model_path: str):
     cfg = get_cfg()
     cfg.merge_from_file(model_zoo.get_config_file("COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml"))
 
@@ -23,7 +24,8 @@ def make_config():
     cfg.DATALOADER.NUM_WORKERS = 2
     # cfg.MODEL.WEIGHTS = "resnet50-0676ba61.pkl"
     # cfg.MODEL.WEIGHTS = "tempo50_95.pkl"
-    cfg.MODEL.WEIGHTS = "./segmentation/baseline50.pkl"
+    # cfg.MODEL.WEIGHTS = "./segmentation/baseline50.pkl"
+    cfg.MODEL.WEIGHTS = model_path
 
     cfg.OUTPUT_DIR = "./output_baseline_final/5"
     cfg.SOLVER.CHECKPOINT_PERIOD = 1_000
@@ -48,12 +50,14 @@ class Trainer(DefaultTrainer):
     def build_evaluator(cls, cfg, dataset_name, output_folder=None):
         return COCOEvaluator("asl_val",)
 
-def main():
+def main(args):
+    path: str = args.path
+
     # Register Dataset
     register_coco_instances("asl_train", {}, "./datasets/ASL_mask/annotations/instances_Train.json", "./datasets/ASL_mask/images")
     register_coco_instances("asl_val", {}, "./datasets/ASL_mask/annotations/instances_Test.json", "./datasets/ASL_mask/images")
 
-    cfg = make_config()
+    cfg = make_config(path)
 
     os.makedirs(cfg.OUTPUT_DIR, exist_ok=True)
     trainer = Trainer(cfg) 
@@ -69,5 +73,10 @@ def main():
     val_loader = build_detection_test_loader(cfg, "asl_val")
     print(inference_on_dataset(predictor.model, val_loader, evaluator))
 
-if __name__ == "__main__":
-    main()
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--path', type=str, required=False)
+
+    args = parser.parse_args()
+
+    main(args)

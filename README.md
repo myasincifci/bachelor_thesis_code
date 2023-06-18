@@ -52,20 +52,36 @@ Linear and Semi-Supervised evaluation can be performed with the following script
     python tools/semi_sup_eval.py \
         --path model_zoo/tempo.pth \
         --runs 10 \
-        --name tempo_semi_sup_eval
+        --name tempo_semi_sup_eval \
+        --samples_pc 20
 
 <ol>
     <li><b>path (str)</b>: Path to model checkpointy to be evaluated.</li>
     <li><b>runs (int)</b>: Number of eval. runs to be performed. Mean is reported.</li>
     <li><b>name (str)</b>: Name of run used in tensorboard.</li>
-    <li><b>samples_pc (int)</b>: Number of samples per class in evaluation set. 20, 15, 10, 5, 1 possible, run on complete set if not specified.</li>
+    <li><b>samples_pc (int)</b>: Number of samples per class in evaluation set. 20, 15, 10, 5, 1 possible, runs on complete set if not specified.</li>
 </ol>
 
-## Segmentation 
+## Object Detection/ Instance Segmentation 
 ### Installation
 Before running the segmentation example, please install the
 detectron2 library following the [installation instructions](https://detectron2.readthedocs.io/en/latest/tutorials/install.html).
+
+## Training backone
+An example for training a ResNet50 Tempo Backbone is provided in the following [jupyter-notebook](segmentation/resnet50.ipynb).
+
 ### Running
-To run ...
+
+    python segmentation/segmentation.py \
+        --path ../model_zoo/tempo50.pkl
+
+Results will be written to tensorboard. 
 
 # Explanation
+Code for the explanation section is provided in the [xai subdirectory](xai).
+## LRP
+[lrp.ipynb](xai/lrp/lrp.ipynb) will create heatmaps for the complete test set.
+## Adversarial Attack
+[lrp.ipynb](xai/lrp/lrp.ipynb) shows additional examples for the adversarial attack experiment.
+
+Resulting heatmaps are written to the [supplementary_material](supplementary_material) directory.
