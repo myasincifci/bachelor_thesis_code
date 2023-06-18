@@ -20,12 +20,12 @@ A script for training a Tempo backbone is provided in [train_net.py](tools/train
 
     python tools/train_net.py \
         --epochs 10 \
-        --lr 0.001 \  
-        --l 0.001 \  
-        --pdf uniform \ 
-        --proximity 30 \ 
-        --save_model custom.pth \ 
-        --eval True 
+        --lr 0.001 \
+        --l 0.001 \
+        --pdf uniform \
+        --proximity 30 \
+        --save_model custom.pth \
+        --eval True
 
 <ol>
   <li><b>epochs (int)</b>: Number of epochs that the backbone is trained for.</li>
