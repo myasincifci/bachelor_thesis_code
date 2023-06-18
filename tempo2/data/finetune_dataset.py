@@ -12,34 +12,17 @@ from mpl_toolkits.axes_grid1 import ImageGrid
 
 class FinetuneDataset(Dataset):
     def __init__(self, path, transform=None, train=True, samples_pc=None) -> None:
+        """
+        Args:
+            path (str): Path to image dataset,
+            transform : Transformations applied to the samples, 
+            train (bool): Creates training set if true, test set if false,
+            samples_pc (int): Number of training samples per class
+        """
+
         self.transform = transform
 
-        class_map = {
-            'A': 0, 
-            'B': 1, 
-            'C': 2,
-            'D': 3,
-            'E': 4,
-            'F': 5,
-            'G': 6,
-            'H': 7,
-            'I': 8,
-            'K': 9,
-            'L': 10,
-            'M': 11,
-            'N': 12,
-            'O': 13,
-            'P': 14,
-            'Q': 15,
-            'R': 16,
-            'S': 17,
-            'T': 18,
-            'U': 19,
-            'V': 20,
-            'W': 21,
-            'X': 22,
-            'Y': 23,
-            }
+        class_map = {l:i for l, i in zip('ABCDEFGHIKLMNOPQRSTUVWXY', range(24))}
 
         self.image_paths = []
         
@@ -60,6 +43,10 @@ class FinetuneDataset(Dataset):
         return len(self.image_paths)
 
     def __getitem__(self, index) -> Tuple[torch.Tensor, torch.Tensor]:
+        """
+        Returns samples of the form (image, label)
+        """
+
         pth, cls = self.image_paths[index]
         image = Image.open(pth)
 

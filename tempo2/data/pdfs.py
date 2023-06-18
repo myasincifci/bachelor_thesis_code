@@ -23,6 +23,8 @@ def p_nml(i: int, sigma: float, I):
 
     return p
 
+# Index for registered pdf functions. 
+# Newly added pdfs must be registered here.
 pdf_index = {
     "uniform": p_uni,
     "normal": p_nml,   

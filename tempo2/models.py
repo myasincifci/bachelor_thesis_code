@@ -4,6 +4,11 @@ from torch import nn
 import torch
 
 class Tempo(nn.Module):
+    """
+    Tempo module consisting of a ResNet-34 feature extractor and a projection 
+    head. Used for self supervised training.
+    """
+
     def __init__(self, pretrain:bool=True, embedding_dim:int=1024) -> None:
         super(Tempo, self).__init__()
         
@@ -21,6 +26,10 @@ class Tempo(nn.Module):
         return z
     
 class Baseline(nn.Module):
+    """
+    Baseline module used for evaluation (ResNet-34 FE + linear head). 
+    """
+
     def __init__(self, out_features:int, freeze_backbone:bool=False, pretrain=True):
         super(Baseline, self).__init__()
 
@@ -43,6 +52,11 @@ class Baseline(nn.Module):
         return x
     
 class TempoLinear(nn.Module):
+    """
+    Tempo  module used for evaluation (ResNet-34 FE + linear head).
+    Can take pretrained weights. 
+    """
+
     def __init__(self, weights, out_features:int, freeze_backbone:bool=False):
         super(TempoLinear, self).__init__()
 

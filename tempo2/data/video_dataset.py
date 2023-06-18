@@ -13,6 +13,10 @@ from mpl_toolkits.axes_grid1 import ImageGrid
 from tempo2.data.pdfs import p_uni
 
 class VideoDataset(Dataset):
+    """
+    Dataset used for Tempo ss-training.
+    """
+
     def __init__(
             self, 
             path, 
@@ -20,6 +24,13 @@ class VideoDataset(Dataset):
             proximity:int=3, 
             pdf:Callable[..., int]=p_uni
         ) -> None:
+        """
+        Args:
+            path (str): Path to video frames,
+            transform: Transformations applied to frames,
+            proximity: Proximity parameter dependent on pdf (tau for uniform, sigma for normal),
+            pdf: Probability density function used for sampling f_j 
+        """
         
         self.p = proximity
         self.transform = transform
@@ -32,6 +43,9 @@ class VideoDataset(Dataset):
         return len(self.image_paths)
 
     def __getitem__(self, index) -> Tuple[torch.Tensor, torch.Tensor]:
+        """
+        Returns samples of form (f_i, f_j, i, j) where f_i is the ith frame of the video.
+        """
 
         # 1. get one element x
         image = Image.open(self.image_paths[index])
