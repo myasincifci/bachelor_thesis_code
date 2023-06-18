@@ -19,23 +19,28 @@ Clone the repository and run:
 A script for training a Tempo backbone is provided in [train_net.py](tools/train_net.py). Run with the following command:
 
     python tools/train_net.py \
+        --epochs 10 \
         --lr 0.001 \  
-        --l 0.001 \ 
-        --epochs 10 \ 
+        --l 0.001 \  
         --pdf uniform \ 
         --proximity 30 \ 
         --save_model tempo.pth \ 
         --eval True 
 
-SGD learning rate
-BarlowTwins loss lambda parameter
-Number of epochs (complete video)
-Sampling pdf
-Proximity (tau or sigma depending on pdf)
-Checkpoint name (not saved if none)
-Perform linear eval at end
+<ol>
+  <li><b>epochs (int)</b>: Number of epochs that the backbone is trained for.</li>
+  <li><b>lr (float)</b>: SGD learning rate.</li>
+  <li><b>l (float)</b>: Lambda parameter for Barlow Twins loss.</li>
+  <li><b>eval (bool)</b>: Perform linear evaluation after training.</li>
+  <li><b>baseline (bool)</b>: Create baseline model (no training).</li>  
+  <li><b>pdf (str)</b>: Specify pdf for sampling (uniform or normal).</li>
+  <li><b>proximity (int)</b>: Proximity parameter for pdf. Tau or Sigma depending on used pdf.</li>
+  <li><b>save_model (str)</b>: Name of model checkpoint. Not saved if not specified.</li>
+
+</ol>
 
 # Evaluation
+Linear and Semi-Supervised evaluation can be performed with the following scripts (results are written to tensorboard at ./runs):
 ## Linear Evaluation
     python tools/linear_eval.py \
         --path model_zoo/tempo.pth \
@@ -48,6 +53,13 @@ Perform linear eval at end
         --path model_zoo/tempo.pth \
         --runs 10 \
         --name tempo_semi_sup_eval
+
+<ol>
+    <li><b>path (str)</b>: Path to model checkpointy to be evaluated.</li>
+    <li><b>runs (int)</b>: Number of eval. runs to be performed. Mean is reported.</li>
+    <li><b>name (str)</b>: Name of run used in tensorboard.</li>
+    <li><b>samples_pc (int)</b>: Number of samples per class in evaluation set. 20, 15, 10, 5, 1 possible, run on complete set if not specified.</li>
+</ol>
 
 ## Segmentation 
 ### Installation
