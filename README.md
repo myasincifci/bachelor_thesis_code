@@ -19,7 +19,7 @@ Clone the repository and run:
 A script for training a Tempo backbone is provided in [train_net.py](tools/train_net.py). Run with the following command:
 
     python tools/train_net.py \
-        --epochs 10 \
+        --epochs 15 \
         --lr 0.001 \
         --l 0.001 \
         --pdf uniform \
