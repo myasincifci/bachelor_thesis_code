@@ -24,7 +24,7 @@ A script for training a Tempo backbone is provided in [train_net.py](tools/train
         --l 0.001 \  
         --pdf uniform \ 
         --proximity 30 \ 
-        --save_model tempo.pth \ 
+        --save_model custom.pth \ 
         --eval True 
 
 <ol>
