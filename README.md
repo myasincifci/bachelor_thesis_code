@@ -16,7 +16,7 @@ Clone the repository and run:
     python model_zoo/download_models.py
 
 # Training a Tempo backbone
-To train a tempo feature extractor 
+A script for training a Tempo backbone is provided in [train_net.py](tools/train_net.py). Run with the following command:
 
     python tools/train_net.py \
         --lr 0.001 \  
