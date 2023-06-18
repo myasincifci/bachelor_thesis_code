@@ -1,4 +1,4 @@
-# Bachelor's Thesis: Exploiting Temporal Coherence in Video
+# Bachelor's Thesis: Exploiting Temporal Coherence in Video to Learn Useful Features
 <b>Abstract</b>: 
 Pre-training convolutional neural networks on large-scale datasets like ImageNet is a well-established paradigm for transferring knowledge to a target task through features that have been learned in the previous training step. However, if there is video footage of the target tasks’ data-generating process, we are arguing that more useful features can be learned by pre-training on that video data, which will ultimately lead to a better downstream performance on the target-task. In this thesis, weare evaluating the effectiveness of this approach by developing a self-supervised method for learn-ing image features from video by exploiting its underlying temporal coherence and evaluating its effectiveness on various computer-vision tasks for American Sign Language hand signs. We are reporting a significant improvement in image-classification accuracy, which becomes especially apparent for small training sets, and a reduction in training time for object detection and instance segmentation.
 
