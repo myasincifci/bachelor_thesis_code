@@ -22,12 +22,9 @@ def make_config(model_path: str):
     cfg.TEST.EVAL_PERIOD = 1_000 # eval every 1_000 iterations
 
     cfg.DATALOADER.NUM_WORKERS = 2
-    # cfg.MODEL.WEIGHTS = "resnet50-0676ba61.pkl"
-    # cfg.MODEL.WEIGHTS = "tempo50_95.pkl"
-    # cfg.MODEL.WEIGHTS = "./segmentation/baseline50.pkl"
     cfg.MODEL.WEIGHTS = model_path
 
-    cfg.OUTPUT_DIR = "./output_baseline_final/5"
+    cfg.OUTPUT_DIR = "./output_segmentation"
     cfg.SOLVER.CHECKPOINT_PERIOD = 1_000
 
     cfg.MODEL.PIXEL_MEAN = [123.675, 116.280, 103.530]
