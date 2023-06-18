@@ -1,7 +1,10 @@
 # Bachelor's Thesis: Exploiting Temporal Coherence in Video
+<b>Abstract</b>: 
+Pre-training convolutional neural networks on large-scale datasets like ImageNet is a well-established paradigm for transferring knowledge to a target task through features that have been learned in the previous training step. However, if there is video footage of the target tasks’ data-generating process, we are arguing that more useful features can be learned by pre-training on that video data, which will ultimately lead to a better downstream performance on the target-task. In this thesis, weare evaluating the effectiveness of this approach by developing a self-supervised method for learn-ing image features from video by exploiting its underlying temporal coherence and evaluating its effectiveness on various computer-vision tasks for American Sign Language hand signs. We are reporting a significant improvement in image-classification accuracy, which becomes especially apparent for small training sets, and a reduction in training time for object detection and instance segmentation.
 
+[Thesis](main.pdf)
 
-## Installation
+# Installation
 Clone the repository and run:
     
     pip install .
@@ -12,7 +15,7 @@ Clone the repository and run:
 ## Download pretrained models
     python model_zoo/download_models.py
 
-## Training
+# Training a Tempo backbone
 To train a tempo feature extractor 
 
     python tools/train_net.py \
@@ -32,6 +35,7 @@ Proximity (tau or sigma depending on pdf)
 Checkpoint name (not saved if none)
 Perform linear eval at end
 
+# Evaluation
 ## Linear Evaluation
     python tools/linear_eval.py \
         --path model_zoo/tempo.pth \
@@ -52,4 +56,4 @@ detectron2 library following the [installation instructions](https://detectron2.
 ### Running
 To run ...
 
-## Explanation
+# Explanation
