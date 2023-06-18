@@ -82,6 +82,6 @@ Code for the explanation section is provided in the [xai subdirectory](xai).
 ## LRP
 [lrp.ipynb](xai/lrp/lrp.ipynb) will create heatmaps for the complete test set.
 ## Adversarial Attack
-[lrp.ipynb](xai/lrp/lrp.ipynb) shows additional examples for the adversarial attack experiment.
+[adversarial.ipynb](xai/adversarial_attack/adversarial.ipynb) shows additional examples for the adversarial attack experiment.
 
 Resulting heatmaps are written to the [supplementary_material](supplementary_material) directory.
