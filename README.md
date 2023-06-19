@@ -83,5 +83,7 @@ Code for the explanation section is provided in the [xai subdirectory](xai).
 [lrp.ipynb](xai/lrp/lrp.ipynb) will create heatmaps for the complete test set.
 ## Adversarial Attack
 [adversarial.ipynb](xai/adversarial_attack/adversarial.ipynb) shows additional examples for the adversarial attack experiment.
+## Relative Relevance
+[relative_relevance.ipynb](xai/relative_relevance/relative_relevance.ipynb) contains the code for computing the relative relevance over the complete test set.
 
 Resulting heatmaps are written to the [supplementary_material](supplementary_material) directory.
